@@ -1,0 +1,32 @@
+<div class="add-book-card">
+    <h2>Add new book :</h2>
+    <form [formGroup]="bookForm">
+        <div>
+            <label>Title : </label>
+            <input id="title" type="text" pInputText formControlName="title" />
+            <div *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched">
+                <small class="p-error">Title is required.</small>
+            </div>
+        </div>
+        <br>
+        <div>
+            <label>Price : </label>
+            <p-inputNumber id="price" type="text" formControlName="price" />
+            <div *ngIf="bookForm.get('price')?.invalid && bookForm.get('price')?.touched">
+                <small class="p-error">Price is required.</small>
+            </div>
+        </div>
+        <br>
+        <div>
+            <label>Publication date : </label>
+            <input id="publicationDate" type="date" pInputText formControlName="publicationDate" />
+            <div *ngIf="bookForm.get('publicationDate')?.invalid && bookForm.get('publicationDate')?.touched">
+                <small class="p-error">Publication date name is invalid.</small>
+            </div>
+        </div>
+    </form>
+    <div class="flex flex-row justify-content-end align-items-center flex-wrap gap-3">
+        <p-button label="Save" (click)="save()"></p-button>
+        <p-button label="Cancel" (click)="cancel()"></p-button>
+    </div>
+</div>

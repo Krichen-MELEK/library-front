@@ -1,0 +1,24 @@
+<h2>Add new Author :</h2>
+<div class="add-author-card">
+    <form [formGroup]="authorForm">
+        <div>
+            <label>First name : </label>
+            <input id="firstName" type="text" pInputText formControlName="firstName" />
+            <div *ngIf="authorForm.get('firstName')?.invalid && authorForm.get('firstName')?.touched">
+                <small class="p-error">First name is required.</small>
+            </div>
+        </div>
+        <br>
+        <div>
+            <label>Last name : </label>
+            <input id="lastName" type="text" pInputText formControlName="lastName" />
+            <div *ngIf="authorForm.get('lastName')?.invalid && authorForm.get('lastName')?.touched">
+                <small class="p-error">Last name is required.</small>
+            </div>
+        </div>
+    </form>
+    <div class="flex flex-row justify-content-end align-items-center flex-wrap gap-3">
+        <p-button label="Save" (click)="save()"></p-button>
+        <p-button label="Cancel" (click)="cancel()"></p-button>
+    </div>
+</div>

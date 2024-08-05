@@ -1,0 +1,31 @@
+<div class="author-list-card">
+    <div class="flex flex-row justify-content-between align-items-center flex-wrap">
+        <h2>Author list</h2>
+        <p-button label="Create new author" (click)="navigateToAddAuthorPage()"></p-button>
+    </div>
+    <p-table [value]="authors" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th style="width: 5rem"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-author>
+            <tr>
+                <td>{{ author.firstName }}</td>
+                <td>{{ author.lastName }}</td>
+                <td>
+                    <div class="flex flex-row justify-content-center align-items-center flex-wrap gap-3" style="min-width: 15rem;">
+                        <p-button type="button" pButton pRipple icon="pi pi-eye" (click)="selectAuthor(author)">
+                        </p-button>
+                        <p-button type="button" pButton pRipple icon="pi pi-pencil" (click)="editAuthor(author)">
+                        </p-button>
+                        <p-button type="button" pButton pRipple icon="pi pi-trash" severity="danger" (click)="deleteAuthor(author)">
+                        </p-button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

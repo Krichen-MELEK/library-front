@@ -1,0 +1,37 @@
+<div class="flex flex-row justify-content-start align-items-center flex-wrap gap-3">
+    <h3>Author : </h3>
+    <span>{{currentAuthor?.firstName}}</span>
+    <span>{{currentAuthor?.lastName}}</span>
+</div>
+<div class="books-card">
+    <p-table [value]="currentAuthorBookList" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Publication date</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-book>
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.price | currency : 'EUR'}}</td>
+                <td>{{ book.publicationDate | date: 'yyyy-MM-dd'}}</td>
+                <td>
+                    <div class="flex flex-row justify-content-center align-items-center flex-wrap gap-3">
+                        <p-button type="button" pButton pRipple icon="pi pi-pencil" (click)="editBook(book)">
+                        </p-button>
+                        <p-button type="button" pButton pRipple icon="pi pi-trash" severity="danger" (click)="deleteBook(book)">
+                        </p-button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <br>
+    <div class="flex flex-row justify-content-end align-items-center flex-wrap gap-3">
+        <p-button label="Add new book" (click)="addNewBook()"></p-button>
+        <p-button label="Go back" (click)="geBack()"></p-button>
+    </div>
+</div>
